@@ -1,0 +1,17 @@
+name: OnesAll
+version: '${project.version}'
+main: eu.baumistlustig.onevsall.OnevsAll
+api-version: 1.16
+authors: [ Baumistlustig ]
+description: A plugin for vorsichtigerYT
+website: https://www.baumistlustig.eu/
+
+commands:
+  timer:
+    permission: onevsall.command.timer
+  round:
+    permission: onevsall.command.round
+  start:
+    persmission: onevsall.command.start
+  getstartmenu:
+    permission: onevsall.command.start
