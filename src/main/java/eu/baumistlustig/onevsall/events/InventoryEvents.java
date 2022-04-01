@@ -14,9 +14,10 @@ public class InventoryEvents implements Listener {
     @EventHandler(ignoreCancelled = true)
     public void onInvClick(InventoryClickEvent e) {
         if (e.getCurrentItem() == null) return;
+        
         if (e.getView().getTitle().equals(ChatColor.GREEN.toString() + ChatColor.BOLD + "Startmenü")) {
             Player p = (Player) e.getWhoClicked();
-            
+
             e.setCancelled(true);
 
             Timer timer = OnevsAll.getInstance().getTimer();
