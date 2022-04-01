@@ -66,21 +66,14 @@ public class Timer {
 
                         setTimerRunning(false);
 
-                        p.sendTitle(ChatColor.GREEN.toString() + ChatColor.BOLD + "Let's Go!", ChatColor.GRAY + "Alle gegen einen ist eröffnet.");
-
-                        p.sendMessage("Debug!!!!");
-
                         Round round = OnevsAll.getInstance().getRound();
+
+                        round.startedGame(p);
 
                         round.setGameRunning(true);
                         break;
                 }
             }
-            p.sendActionBar(new TextComponent(ChatColor.GOLD.toString() + ChatColor.BOLD + getTimerTime()));
-            p.sendMessage(ChatMessageType.ACTION_BAR, new TextComponent(ChatColor.GOLD.toString() + ChatColor.BOLD + getTimerTime()));
-            p.spigot().sendMessage(ChatMessageType.ACTION_BAR, new TextComponent(ChatColor.GOLD.toString() + ChatColor.BOLD + getTimerTime()));
-            p.sendActionBar("Test");
-            p.sendActionBar(new TextComponent(ChatColor.GOLD.toString() + ChatColor.BOLD + getTimerTime()));
         }
     }
 

@@ -1,6 +1,8 @@
 package eu.baumistlustig.onevsall.events;
 
 import eu.baumistlustig.onevsall.OnevsAll;
+import eu.baumistlustig.onevsall.commands.Start;
+import eu.baumistlustig.onevsall.utils.Round;
 import eu.baumistlustig.onevsall.utils.Timer;
 import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
@@ -17,11 +19,12 @@ public class InventoryEvents implements Listener {
             
             e.setCancelled(true);
 
+            Timer timer = OnevsAll.getInstance().getTimer();
+            Round round = OnevsAll.getInstance().getRound();
+
             if (e.getCurrentItem().getItemMeta().hasLocalizedName()) {
                 switch (e.getCurrentItem().getItemMeta().getLocalizedName()) {
                     case "start":
-                        Timer timer = OnevsAll.getInstance().getTimer();
-
                         timer.setTimerTime(100);
 
                         timer.setTimerRunning(true);
@@ -36,6 +39,20 @@ public class InventoryEvents implements Listener {
 
                     case "reset":
                         p.closeInventory();
+
+                    case "instastart": {
+                        round.setGameRunning(true);
+                        round.startedGame(p);
+
+                        p.closeInventory();
+                    }
+                    case "kits": {
+                        p.closeInventory();
+
+                        Start kitMenu = OnevsAll.getInstance().getKitMenu();
+
+                        kitMenu.kitInventory(p);
+                    }
                 }
             }
         }

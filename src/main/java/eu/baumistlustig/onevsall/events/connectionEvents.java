@@ -12,12 +12,11 @@ import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.event.player.PlayerQuitEvent;
 
 public class connectionEvents implements Listener {
-
     @EventHandler(ignoreCancelled = true)
     public void onPlayerJoin(PlayerJoinEvent e) {
         Player p = e.getPlayer();
 
-        // Give Administrators an Item to open the startmenu.
+        // Give Administrators an Item to open the start menu.
 
         if ((p.isOp() || p.hasPermission("*")) && !(p.getInventory().contains(Material.CLOCK))) {
             p.getInventory().addItem(new ItemBuilder(Material.CLOCK)
@@ -25,6 +24,8 @@ public class connectionEvents implements Listener {
                     .setLore(ChatColor.GRAY + "Öffnet das Startmenü zum Starten und Verwalten der Runde.")
                     .setLocalizedName("startmenu")
                     .build());
+
+
         }
 
         // Set Welcome Message

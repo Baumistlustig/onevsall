@@ -19,45 +19,68 @@ public class Start implements CommandExecutor {
         inventory.setItem(0, new ItemBuilder(Material.GRAY_STAINED_GLASS_PANE)
                 .setDisplayname(ChatColor.GREEN.toString() + ChatColor.BOLD + "Startmenü")
                 .setLocalizedName("block")
-                .build());
+                .build()
+        );
 
         inventory.setItem(1, new ItemBuilder(Material.CLOCK)
                 .setDisplayname(ChatColor.GREEN.toString() + ChatColor.BOLD + "Starte das Spiel")
                 .setLore(ChatColor.GRAY + "Das Spiel wird innerhalb von 100 Sekunden gestartet.")
                 .setLocalizedName("start")
-                .build());
+                .build()
+        );
 
         inventory.setItem(2, new ItemBuilder(Material.GRAY_STAINED_GLASS_PANE)
                 .setDisplayname(ChatColor.GREEN.toString() + ChatColor.BOLD + "Startmenü")
                 .setLocalizedName("block")
-                .build());
+                .build()
+        );
 
         inventory.setItem(3, new ItemBuilder(Material.BARRIER)
                 .setDisplayname(ChatColor.RED.toString() + ChatColor.BOLD + "Reset der Welt")
                 .setLore(ChatColor.GRAY + "Die Welt wird zurückgesetzt.")
                 .setLocalizedName("reset")
-                .build());
+                .build()
+        );
 
         inventory.setItem(4, new ItemBuilder(Material.GRAY_STAINED_GLASS_PANE)
                 .setDisplayname(ChatColor.GREEN.toString() + ChatColor.BOLD + "Startmenü")
                 .setLocalizedName("block")
-                .build());
+                .build()
+        );
 
         inventory.setItem(5, new ItemBuilder(Material.EMERALD_BLOCK)
                 .setDisplayname(ChatColor.AQUA.toString() + ChatColor.BOLD + "InstaStart der Runde")
                 .setLore(ChatColor.GRAY + "Die Runde wird soft gestartet, es gibt keinen Timer.")
                 .setLocalizedName("instastart")
-                .build());
+                .build()
+        );
 
         inventory.setItem(6, new ItemBuilder(Material.GRAY_STAINED_GLASS_PANE)
                 .setDisplayname(ChatColor.GREEN.toString() + ChatColor.BOLD + "Startmenü")
                 .setLocalizedName("block")
-                .build());
+                .build()
+        );
+
+        inventory.setItem(7, new ItemBuilder(Material.DIAMOND_SWORD)
+                .setDisplayname(ChatColor.AQUA.toString() + ChatColor.BOLD + "Kits")
+                .setLore(ChatColor.GRAY + "Hier können die Kits geändert werden.")
+                .setLore(ChatColor.DARK_GRAY + "Dieß muss vor dem Rundenstart durchgeführt werden!")
+                .setLocalizedName("kits")
+                .setUnbreakable(true)
+                .build()
+        );
 
         inventory.setItem(8, new ItemBuilder(Material.GRAY_STAINED_GLASS_PANE)
                 .setDisplayname(ChatColor.GREEN.toString() + ChatColor.BOLD + "Startmenü")
                 .setLocalizedName("block")
-                .build());
+                .build()
+        );
+
+        p.openInventory(inventory);
+    }
+
+    public void kitInventory(Player p) {
+        Inventory inventory = Bukkit.createInventory(null, 9, ChatColor.BLUE.toString() + ChatColor.BOLD + "Kitmenü");
 
         p.openInventory(inventory);
     }

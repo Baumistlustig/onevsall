@@ -35,14 +35,18 @@ public class Round {
         this.gameTime = time;
     }
 
+    public void startedGame(Player p) {
+        p.sendTitle(ChatColor.GREEN.toString() + ChatColor.BOLD + "Let's Go!", ChatColor.GRAY + "Alle gegen einen ist eröffnet.");
+    }
+
     public void sendActionBar() {
         for (Player p : Bukkit.getOnlinePlayers()) {
-            if (!gameIsRunning()) {
-                p.spigot().sendMessage(ChatMessageType.ACTION_BAR, new TextComponent(ChatColor.RED.toString() + ChatColor.ITALIC + ""));
-                continue;
-            }
 
-            p.spigot().sendMessage(ChatMessageType.ACTION_BAR, new TextComponent(ChatColor.GOLD.toString() + ChatColor.BOLD + getGameTime()));
+            p.spigot().sendMessage(ChatMessageType.ACTION_BAR, new TextComponent(ChatColor.GOLD + "Runde läuft seit:"
+                    + ChatColor.BOLD + getGameTime()
+                    + ChatColor.RESET + ChatColor.RED + " ┃ "
+                    + ChatColor.GOLD + ChatColor.BOLD + "Es leben noch x Spieler"
+            ));
         }
     }
 

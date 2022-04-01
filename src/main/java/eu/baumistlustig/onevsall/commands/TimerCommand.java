@@ -1,6 +1,7 @@
 package eu.baumistlustig.onevsall.commands;
 
 import eu.baumistlustig.onevsall.OnevsAll;
+import eu.baumistlustig.onevsall.utils.Round;
 import eu.baumistlustig.onevsall.utils.Timer;
 import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
@@ -17,6 +18,7 @@ public class TimerCommand implements CommandExecutor {
             return true;
         }
 
+        Round round = OnevsAll.getInstance().getRound();
         Timer timer = OnevsAll.getInstance().getTimer();
 
         switch (args[0].toLowerCase()) {
@@ -27,6 +29,10 @@ public class TimerCommand implements CommandExecutor {
                 if (timer.timerIsRunning()) {
                     sender.sendMessage(ChatColor.RED + "Der Timer läuft bereits.");
                     break;
+                }
+
+                if (round.gameIsRunning()) {
+                    sender.sendMessage(ChatColor.RED + "Die Runde läuft bereits.");
                 }
 
                 timer.setTimerRunning(true);

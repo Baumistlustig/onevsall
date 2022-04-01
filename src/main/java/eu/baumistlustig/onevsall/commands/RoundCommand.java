@@ -16,10 +16,11 @@ public class RoundCommand implements CommandExecutor {
 
         Player p = (Player) s;
 
+        Timer timer = OnevsAll.getInstance().getTimer();
+        Round round = OnevsAll.getInstance().getRound();
+
         switch (args[0].toLowerCase()) {
             case "instastart": {
-                Timer timer = OnevsAll.getInstance().getTimer();
-                Round round = OnevsAll.getInstance().getRound();
 
                 if (round.gameIsRunning() || timer.timerIsRunning()) {
                     break;
@@ -33,8 +34,11 @@ public class RoundCommand implements CommandExecutor {
                 break;
             }
 
-            case "": {
+            case "stop": {
 
+                if (!round.gameIsRunning()) {
+                    break;
+                }
             }
         }
 

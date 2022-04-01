@@ -24,6 +24,10 @@ public final class OnevsAll extends JavaPlugin {
 
     private Round round;
 
+    private Start kitMenu;
+
+    private getStartMenu getStartMenu;
+
     @Override
     public void onLoad() {
         instance = this;
@@ -62,4 +66,8 @@ public final class OnevsAll extends JavaPlugin {
     }
 
     public Round getRound() { return round; }
+
+    public Start getKitMenu() { return kitMenu; }
+
+    public getStartMenu getStartMenuItem() { return getStartMenu; }
 }
