@@ -63,8 +63,9 @@ public class Start implements CommandExecutor {
 
         inventory.setItem(7, new ItemBuilder(Material.DIAMOND_SWORD)
                 .setDisplayname(ChatColor.AQUA.toString() + ChatColor.BOLD + "Kits")
-                .setLore(ChatColor.GRAY + "Hier können die Kits geändert werden.")
-                .setLore(ChatColor.DARK_GRAY + "Dieß muss vor dem Rundenstart durchgeführt werden!")
+                .setLore(ChatColor.GRAY + "Hier können die Kits geändert werden.",
+                        ChatColor.DARK_GRAY + "Dies muss vor dem Rundenstart durchgeführt werden!"
+                )
                 .setLocalizedName("kits")
                 .setUnbreakable(true)
                 .build()

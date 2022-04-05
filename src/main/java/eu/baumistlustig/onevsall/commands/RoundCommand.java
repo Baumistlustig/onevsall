@@ -39,6 +39,8 @@ public class RoundCommand implements CommandExecutor {
                 if (!round.gameIsRunning()) {
                     break;
                 }
+
+                round.setGameRunning(false);
             }
         }
 

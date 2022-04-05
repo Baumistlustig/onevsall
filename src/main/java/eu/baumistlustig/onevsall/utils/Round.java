@@ -5,6 +5,7 @@ import net.md_5.bungee.api.ChatMessageType;
 import net.md_5.bungee.api.chat.TextComponent;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
+import org.bukkit.GameMode;
 import org.bukkit.entity.Player;
 import org.bukkit.scheduler.BukkitRunnable;
 
@@ -39,13 +40,45 @@ public class Round {
         p.sendTitle(ChatColor.GREEN.toString() + ChatColor.BOLD + "Let's Go!", ChatColor.GRAY + "Alle gegen einen ist eröffnet.");
     }
 
+    public void checkForWin (Player p ) {
+        if (p.isOp()/*p.hasPermission("onevsall.streamer")*/) {
+            setGameRunning(false);
+            p.sendTitle(ChatColor.GREEN.toString() + ChatColor.BOLD + "Runde vorbei!",
+                    ChatColor.GRAY + "Die Spieler haben den Streamer eliminiert und gewinnt somit!"
+            );
+        } else {
+            boolean counter = true;
+            for (Player onlinePlayer : Bukkit.getOnlinePlayers()) {
+                if (onlinePlayer.getGameMode().equals(GameMode.SURVIVAL)) {
+                    counter = true;
+                    break;
+                } else {
+                    counter = false;
+                }
+            }
+
+            if (!counter) {
+                setGameRunning(false);
+                p.sendTitle(ChatColor.GREEN.toString() + ChatColor.BOLD + "Runde vorbei!",
+                        ChatColor.GRAY + "Der Streamer hat alle Gegner eliminiert, und gewinnt somit!"
+                );
+            }
+        }
+    }
+
     public void sendActionBar() {
         for (Player p : Bukkit.getOnlinePlayers()) {
 
-            p.spigot().sendMessage(ChatMessageType.ACTION_BAR, new TextComponent(ChatColor.GOLD + "Runde läuft seit:"
+            if (!gameIsRunning()) {
+                continue;
+            }
+
+
+
+            p.spigot().sendMessage(ChatMessageType.ACTION_BAR, new TextComponent(ChatColor.GOLD + "Runde läuft seit: "
                     + ChatColor.BOLD + getGameTime()
                     + ChatColor.RESET + ChatColor.RED + " ┃ "
-                    + ChatColor.GOLD + ChatColor.BOLD + "Es leben noch x Spieler"
+                    + ChatColor.GOLD + ChatColor.BOLD + "Es leben noch " + /*players ->*/"bananen" + " Spieler"
             ));
         }
     }

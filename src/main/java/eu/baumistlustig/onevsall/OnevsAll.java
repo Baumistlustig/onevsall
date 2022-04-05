@@ -4,10 +4,7 @@ import eu.baumistlustig.onevsall.commands.RoundCommand;
 import eu.baumistlustig.onevsall.commands.Start;
 import eu.baumistlustig.onevsall.commands.TimerCommand;
 import eu.baumistlustig.onevsall.commands.getStartMenu;
-import eu.baumistlustig.onevsall.events.InventoryEvents;
-import eu.baumistlustig.onevsall.events.ItemClickEvent;
-import eu.baumistlustig.onevsall.events.chatEvents;
-import eu.baumistlustig.onevsall.events.connectionEvents;
+import eu.baumistlustig.onevsall.events.*;
 import eu.baumistlustig.onevsall.utils.Round;
 import eu.baumistlustig.onevsall.utils.Timer;
 import org.bukkit.Bukkit;
@@ -46,7 +43,7 @@ public final class OnevsAll extends JavaPlugin {
         pluginManager.registerEvents(new chatEvents(), this);
         pluginManager.registerEvents(new InventoryEvents(), this);
         pluginManager.registerEvents(new ItemClickEvent(), this);
-
+        pluginManager.registerEvents(new roundEvents(), this);
         timer = new Timer(false, 0);
 
         round = new Round(false, 0);
