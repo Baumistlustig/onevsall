@@ -13,8 +13,8 @@ public class getStartMenu implements CommandExecutor {
 
     public void giveStartMenuItem(Player p) {
         if ((p.isOp() || p.hasPermission("*")) && !(p.getInventory().contains(Material.CLOCK))) {
-            if (p.getInventory().getItem(31) == null) {
-                p.getInventory().setItem(31, new ItemBuilder(Material.CLOCK)
+            if (p.getInventory().getItem(40) == null) {
+                p.getInventory().setItem(40, new ItemBuilder(Material.CLOCK)
                         .setDisplayname(ChatColor.GREEN.toString() + ChatColor.BOLD + "Startmenü")
                         .setLore(ChatColor.GRAY + "Öffnet das Startmenü zum Starten und Verwalten der Runde.")
                         .setLocalizedName("startmenu")

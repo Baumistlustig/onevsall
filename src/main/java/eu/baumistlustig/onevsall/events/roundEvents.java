@@ -13,9 +13,13 @@ public class roundEvents implements Listener {
     public void onPlayerDeath(PlayerDeathEvent e) {
         Player p = e.getEntity().getPlayer();
 
-        p.setGameMode(GameMode.SPECTATOR);
-
         Round round = OnevsAll.getInstance().getRound();
+
+        if (round.gameIsRunning()) {
+            if (p != null) {
+                p.setGameMode(GameMode.SPECTATOR);
+            }
+        }
 
         round.checkForWin(p);
     }

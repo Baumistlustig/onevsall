@@ -41,7 +41,8 @@ public class Round {
     }
 
     public void checkForWin (Player p ) {
-        if (p.isOp()/*p.hasPermission("onevsall.streamer")*/) {
+        if (!gameIsRunning()) { return; }
+        if (p.isOp()) {
             setGameRunning(false);
             p.sendTitle(ChatColor.GREEN.toString() + ChatColor.BOLD + "Runde vorbei!",
                     ChatColor.GRAY + "Die Spieler haben den Streamer eliminiert und gewinnt somit!"
@@ -67,18 +68,27 @@ public class Round {
     }
 
     public void sendActionBar() {
+        int playerCount = 0;
         for (Player p : Bukkit.getOnlinePlayers()) {
 
             if (!gameIsRunning()) {
                 continue;
             }
 
+            if (!(p.isOp()) && p.getGameMode().equals(GameMode.SURVIVAL)) playerCount += 1;
 
+            if (playerCount == 1) {
+                p.spigot().sendMessage(ChatMessageType.ACTION_BAR, new TextComponent(ChatColor.GOLD + "Runde läuft seit: "
+                        + ChatColor.BOLD + getGameTime()
+                        + ChatColor.RESET + ChatColor.RED + " ┃ "
+                        + ChatColor.GOLD + ChatColor.BOLD + "Es lebt noch " + playerCount + " Spieler"
+                ));
+            }
 
             p.spigot().sendMessage(ChatMessageType.ACTION_BAR, new TextComponent(ChatColor.GOLD + "Runde läuft seit: "
                     + ChatColor.BOLD + getGameTime()
                     + ChatColor.RESET + ChatColor.RED + " ┃ "
-                    + ChatColor.GOLD + ChatColor.BOLD + "Es leben noch " + /*players ->*/"bananen" + " Spieler"
+                    + ChatColor.GOLD + ChatColor.BOLD + "Es leben noch " + playerCount + " Spieler"
             ));
         }
     }

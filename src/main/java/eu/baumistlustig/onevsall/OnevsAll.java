@@ -33,6 +33,8 @@ public final class OnevsAll extends JavaPlugin {
     @Override
     public void onEnable() {
 
+        Bukkit.getLogger().info("§aOneVsAll Plugin wurde erfolgreich geladen.");
+
         Objects.requireNonNull(getCommand("timer")).setExecutor(new TimerCommand());
         Objects.requireNonNull(getCommand("start")).setExecutor(new Start());
         Objects.requireNonNull(getCommand("getstartmenu")).setExecutor(new getStartMenu());
