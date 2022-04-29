@@ -12,6 +12,8 @@ commands:
   round:
     permission: onevsall.command.round
   start:
-    persmission: onevsall.command.start
+    permission: onevsall.command.start
   getstartmenu:
     permission: onevsall.command.start
+  reset:
+    permission: onevsall.command.reset

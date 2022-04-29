@@ -9,6 +9,8 @@ import org.bukkit.GameMode;
 import org.bukkit.entity.Player;
 import org.bukkit.scheduler.BukkitRunnable;
 
+import java.util.logging.Logger;
+
 public class Round {
 
     private boolean gameRunning;
@@ -83,13 +85,14 @@ public class Round {
                         + ChatColor.RESET + ChatColor.RED + " ┃ "
                         + ChatColor.GOLD + ChatColor.BOLD + "Es lebt noch " + playerCount + " Spieler"
                 ));
+                return;
+            } else {
+                p.spigot().sendMessage(ChatMessageType.ACTION_BAR, new TextComponent(ChatColor.GOLD + "Runde läuft seit: "
+                        + ChatColor.BOLD + getGameTime()
+                        + ChatColor.RESET + ChatColor.RED + " ┃ "
+                        + ChatColor.GOLD + ChatColor.BOLD + "Es leben noch " + playerCount + " Spieler"
+                ));
             }
-
-            p.spigot().sendMessage(ChatMessageType.ACTION_BAR, new TextComponent(ChatColor.GOLD + "Runde läuft seit: "
-                    + ChatColor.BOLD + getGameTime()
-                    + ChatColor.RESET + ChatColor.RED + " ┃ "
-                    + ChatColor.GOLD + ChatColor.BOLD + "Es leben noch " + playerCount + " Spieler"
-            ));
         }
     }
 

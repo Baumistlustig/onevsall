@@ -1,9 +1,6 @@
 package eu.baumistlustig.onevsall;
 
-import eu.baumistlustig.onevsall.commands.RoundCommand;
-import eu.baumistlustig.onevsall.commands.Start;
-import eu.baumistlustig.onevsall.commands.TimerCommand;
-import eu.baumistlustig.onevsall.commands.getStartMenu;
+import eu.baumistlustig.onevsall.commands.*;
 import eu.baumistlustig.onevsall.events.*;
 import eu.baumistlustig.onevsall.utils.Round;
 import eu.baumistlustig.onevsall.utils.Timer;
@@ -39,6 +36,7 @@ public final class OnevsAll extends JavaPlugin {
         Objects.requireNonNull(getCommand("start")).setExecutor(new Start());
         Objects.requireNonNull(getCommand("getstartmenu")).setExecutor(new getStartMenu());
         Objects.requireNonNull(getCommand("round")).setExecutor(new RoundCommand());
+        Objects.requireNonNull(getCommand("reset")).setExecutor(new reset());
 
         final PluginManager pluginManager = Bukkit.getPluginManager();
         pluginManager.registerEvents(new connectionEvents(), this);

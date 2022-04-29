@@ -40,12 +40,14 @@ public class InventoryEvents implements Listener {
 
                     case "reset":
                         p.closeInventory();
+                        break;
 
                     case "instastart": {
                         round.setGameRunning(true);
                         round.startedGame(p);
 
                         p.closeInventory();
+                        break;
                     }
                     case "kits": {
                         p.closeInventory();
@@ -53,6 +55,7 @@ public class InventoryEvents implements Listener {
                         Start kitMenu = OnevsAll.getInstance().getKitMenu();
 
                         kitMenu.kitInventory(p);
+                        break;
                     }
                 }
             }

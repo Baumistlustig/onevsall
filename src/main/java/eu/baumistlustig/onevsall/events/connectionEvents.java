@@ -16,17 +16,15 @@ public class connectionEvents implements Listener {
     public void onPlayerJoin(PlayerJoinEvent e) {
         Player p = e.getPlayer();
 
-        // Give Administrators an Item to open the start menu.
-
-        getStartMenu startMenu = OnevsAll.getInstance().getStartMenuItem();
-
-        startMenu.giveStartMenuItem(p);
-
         // Set Welcome Message
         e.joinMessage(Component.text(ChatColor.BOLD.toString() + ChatColor.GREEN  + "+ " + ChatColor.RESET+ ChatColor.GRAY + p.getName()));
 
+        // Give Administrators an Item to open the start menu
+        getStartMenu startMenu = OnevsAll.getInstance().getStartMenuItem();
+        startMenu.giveStartMenuItem(p);
+
         // Load Scoreboard
-        p.setScoreboard(Scoreboard.getBaseScoreboard(e.getPlayer()));
+        p.setScoreboard(Scoreboard.getBaseScoreboard(p));
     }
 
     @EventHandler(ignoreCancelled = true)
